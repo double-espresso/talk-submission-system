@@ -11,8 +11,17 @@ export class HomeComponent implements OnInit {
 
   constructor(public auth: AuthService) { }
 
-  login() {
-    this.auth.login();
+  googleLogin() {
+    this.auth.googleLogin();
+  }
+  facebookLogin() {
+    this.auth.facebookLogin();
+  }
+  twitterLogin() {
+    this.auth.twitterLogin();
+  }
+  githubLogin() {
+    this.auth.githubLogin();
   }
 
   ngOnInit() {

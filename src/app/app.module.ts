@@ -22,7 +22,7 @@ import { routing } from './app.routing';
     NavBarComponent,
     AddItemsComponent,
     EditItemsComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthComponent } from './auth/auth.component';
 import { ItemsComponent } from './items/items.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddItemsComponent } from './add-items/add-items.component';

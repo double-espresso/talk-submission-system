@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../services/auth.service';
-
+import { Profile } from '../models/profile';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   }
   twitterLogin() {
     this.auth.twitterLogin();
+
   }
   githubLogin() {
     this.auth.githubLogin();

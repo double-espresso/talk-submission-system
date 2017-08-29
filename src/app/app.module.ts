@@ -6,6 +6,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseService } from './services/firebase.service';
 import { AuthService } from './services/auth.service';
+import { ProfileService } from './services/profile.service';
 
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
@@ -14,6 +15,7 @@ import { AddItemsComponent } from './add-items/add-items.component';
 import { EditItemsComponent } from './edit-items/edit-items.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
+import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { routing } from './app.routing';
     AddItemsComponent,
     EditItemsComponent,
     HomeComponent,
+    TwitterProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { routing } from './app.routing';
     AngularFireAuthModule,
     routing,
   ],
-  providers: [FirebaseService, AuthService],
+  providers: [FirebaseService, AuthService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

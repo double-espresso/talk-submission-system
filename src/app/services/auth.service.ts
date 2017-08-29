@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = afAuth.authState;
   }
 
@@ -23,7 +24,20 @@ export class AuthService {
   }
 
   twitterLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+    .then((data)=>{
+      this.db.object(`/users/${data.user.uid}`).subscribe(data => {
+          if(data.$value === null) {
+            firebase.database().ref('users/' + data.user.uid).set({
+              name: data.additionalUserInfo.profile.name,
+              username: data.additionalUserInfo.username,
+              photo: data.additionalUserInfo.profile.profile_image_url,
+              bio: data.additionalUserInfo.profile.description,
+              loginType: "twitter"
+            });
+          }
+        });
+    });
   }
 
   logout() {

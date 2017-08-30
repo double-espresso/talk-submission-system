@@ -7,32 +7,32 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
-    this.user = afAuth.authState;
+  constructor(private authentication: AngularFireAuth, private database: AngularFireDatabase) {
+    this.user = authentication.authState;
   }
 
   googleLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   githubLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
   }
 
   facebookLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
   twitterLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
-    .then((data)=>{
-      this.db.object(`/users/${data.user.uid}`).subscribe(data => {
-          if(data.$value === null) {
-            firebase.database().ref('users/' + data.user.uid).set({
-              name: data.additionalUserInfo.profile.name,
-              username: data.additionalUserInfo.username,
-              photo: data.additionalUserInfo.profile.profile_image_url,
-              bio: data.additionalUserInfo.profile.description,
+    this.authentication.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
+    .then((currentUserInfo)=>{
+      this.database.object(`/users/${currentUserInfo.user.uid}`).subscribe(firebaseUserInfo => {
+          if(firebaseUserInfo.$value === null) {
+            firebase.database().ref('users/' + firebaseUserInfo.user.uid).set({
+              name: firebaseUserInfo.additionalUserInfo.profile.name,
+              username: firebaseUserInfo.additionalUserInfo.username,
+              photo: firebaseUserInfo.additionalUserInfo.profile.profile_image_url,
+              bio: firebaseUserInfo.additionalUserInfo.profile.description,
               loginType: "twitter"
             });
           }
@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.authentication.auth.signOut();
   }
 }

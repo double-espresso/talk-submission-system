@@ -9,10 +9,10 @@ import { Item } from '../models/item';
 })
 export class ItemsComponent implements OnInit {
   items: Item[];
-  constructor(private fb: FirebaseService ) { }
+  constructor(private firebaseService: FirebaseService ) { }
 
   ngOnInit() {
-    this.fb.getItems()
+    this.firebaseService.getItems()
     .subscribe((items)=>{
       console.log(items)
       this.items = items;

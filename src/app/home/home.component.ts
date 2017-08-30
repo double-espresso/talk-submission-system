@@ -9,20 +9,20 @@ import { Profile } from '../models/profile';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   googleLogin() {
-    this.auth.googleLogin();
+    this.authService.googleLogin();
   }
   facebookLogin() {
-    this.auth.facebookLogin();
+    this.authService.facebookLogin();
   }
   twitterLogin() {
-    this.auth.twitterLogin();
+    this.authService.twitterLogin();
 
   }
   githubLogin() {
-    this.auth.githubLogin();
+    this.authService.githubLogin();
   }
 
   ngOnInit() {

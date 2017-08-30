@@ -5,10 +5,10 @@ import { Item } from '../models/item';
 @Injectable()
 export class FirebaseService {
   items: FirebaseListObservable<any[]>;
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private database: AngularFireDatabase) { }
 
   getItems() {
-    this.items = this.db.list('/items') as FirebaseListObservable<Item[]>;
+    this.items = this.database.list('/items') as FirebaseListObservable<Item[]>;
     return this.items;
   }
 }

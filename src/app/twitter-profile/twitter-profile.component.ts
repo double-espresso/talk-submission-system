@@ -11,11 +11,11 @@ import { Profile } from '../models/profile';
 })
 export class TwitterProfileComponent implements OnInit {
   profile: Profile;
-  constructor(private auth: AuthService, private profileService: ProfileService) {
+  constructor(private authService: AuthService, private profileService: ProfileService) {
   }
 
   ngOnInit() {
-    this.auth.user.subscribe((data)=> {
+    this.authService.user.subscribe((data)=> {
         this.profile = this.profileService.getProfile(data.uid)
         .subscribe((profile)=>{
           this.profile = profile;

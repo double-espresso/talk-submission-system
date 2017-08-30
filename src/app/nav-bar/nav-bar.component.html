@@ -12,9 +12,9 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-left">
         <li><a [routerLink]="['/']">Home</a></li>
-        <li *ngIf="(auth.user | async)" ><a [routerLink]="['/items']">Items</a></li>
+        <li *ngIf="(authService.user | async)" ><a [routerLink]="['/items']">Items</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" *ngIf="(auth.user | async)">
+      <ul class="nav navbar-nav navbar-right" *ngIf="(authService.user | async)">
         <li><a (click)="logout()"  [routerLink]="['/']">Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->

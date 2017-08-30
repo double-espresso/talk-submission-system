@@ -6,10 +6,10 @@ import { Profile } from '../models/profile';
 @Injectable()
 export class ProfileService {
   profile: Observable<Profile>;
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private database: AngularFireDatabase) { }
 
   getProfile(id) {
-    this.profile = this.db.object(`users/${id}`);
+    this.profile = this.database.object(`users/${id}`);
     return this.profile;
   }
 }

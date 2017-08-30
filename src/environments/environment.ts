@@ -5,12 +5,5 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyBmrg5lBGwDYg3AFH5cZiNsURDAMQLVNTs",
-    authDomain: "talkssubmissionsystem.firebaseapp.com",
-    databaseURL: "https://talkssubmissionsystem.firebaseio.com",
-    projectId: "talkssubmissionsystem",
-    storageBucket: "talkssubmissionsystem.appspot.com",
-    messagingSenderId: "206258465915"
-}
+
 };

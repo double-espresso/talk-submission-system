@@ -11,7 +11,7 @@ import { Profile } from '../models/profile';
 })
 export class TwitterProfileComponent implements OnInit {
   profile: Profile;
-  constructor(public auth: AuthService, public profileService: ProfileService) {
+  constructor(private auth: AuthService, private profileService: ProfileService) {
   }
 
   ngOnInit() {

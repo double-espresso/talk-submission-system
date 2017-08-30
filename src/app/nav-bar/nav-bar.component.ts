@@ -7,7 +7,7 @@ import { AuthService} from '../services/auth.service';
   styleUrls: ['./nav-bar.component.sass']
 })
 export class NavBarComponent implements OnInit {
-  constructor(public auth: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   logout() {
     this.auth.logout();

@@ -7,7 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
-  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
     this.user = afAuth.authState;
   }
 

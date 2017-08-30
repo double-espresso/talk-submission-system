@@ -9,7 +9,7 @@ import { Profile } from '../models/profile';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   googleLogin() {
     this.auth.googleLogin();

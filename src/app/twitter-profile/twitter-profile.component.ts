@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
 import { AngularFireDatabase} from 'angularfire2/database';
+import { Profile } from '../models/profile';
 
 @Component({
   selector: 'app-twitter-profile',
@@ -9,7 +10,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
   styleUrls: ['./twitter-profile.component.sass']
 })
 export class TwitterProfileComponent implements OnInit {
-  profile: any;
+  profile: Profile;
   constructor(public auth: AuthService, public profileService: ProfileService) {
   }
 

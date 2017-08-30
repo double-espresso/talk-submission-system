@@ -5,7 +5,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { Profile } from '../models/profile';
 
 @Component({
-  selector: 'app-twitter-profile',
+  selector: 'tss-twitter-profile',
   templateUrl: './twitter-profile.component.html',
   styleUrls: ['./twitter-profile.component.sass']
 })

@@ -3,7 +3,7 @@ import { AuthService} from '../services/auth.service';
 import { Profile } from '../models/profile';
 
 @Component({
-  selector: 'app-home',
+  selector: 'tss-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })

@@ -3,7 +3,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { Item } from '../models/item';
 
 @Component({
-  selector: 'app-items',
+  selector: 'tss-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.sass']
 })

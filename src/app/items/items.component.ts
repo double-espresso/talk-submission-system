@@ -5,7 +5,7 @@ import { Item } from '../models/item';
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.css']
+  styleUrls: ['./items.component.sass']
 })
 export class ItemsComponent implements OnInit {
   items: Item[];

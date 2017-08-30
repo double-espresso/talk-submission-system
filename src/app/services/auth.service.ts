@@ -28,11 +28,11 @@ export class AuthService {
     .then((currentUserInfo)=>{
       this.database.object(`/users/${currentUserInfo.user.uid}`).subscribe(firebaseUserInfo => {
           if(firebaseUserInfo.$value === null) {
-            firebase.database().ref('users/' + firebaseUserInfo.user.uid).set({
-              name: firebaseUserInfo.additionalUserInfo.profile.name,
-              username: firebaseUserInfo.additionalUserInfo.username,
-              photo: firebaseUserInfo.additionalUserInfo.profile.profile_image_url,
-              bio: firebaseUserInfo.additionalUserInfo.profile.description,
+            firebase.database().ref('users/' + currentUserInfo.user.uid).set({
+              name: currentUserInfo.additionalUserInfo.profile.name,
+              username: currentUserInfo.additionalUserInfo.username,
+              photo: currentUserInfo.additionalUserInfo.profile.profile_image_url,
+              bio: currentUserInfo.additionalUserInfo.profile.description,
               loginType: "twitter"
             });
           }

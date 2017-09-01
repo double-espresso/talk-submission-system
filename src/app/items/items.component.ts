@@ -3,16 +3,16 @@ import { FirebaseService } from '../services/firebase.service';
 import { Item } from '../models/item';
 
 @Component({
-  selector: 'app-items',
+  selector: 'tss-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.css']
+  styleUrls: ['./items.component.sass']
 })
 export class ItemsComponent implements OnInit {
   items: Item[];
-  constructor(private fb: FirebaseService ) { }
+  constructor(private firebaseService: FirebaseService ) { }
 
   ngOnInit() {
-    this.fb.getItems()
+    this.firebaseService.getItems()
     .subscribe((items)=>{
       console.log(items)
       this.items = items;

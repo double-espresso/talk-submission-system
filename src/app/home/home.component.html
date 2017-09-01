@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Submission System</h1>
     <p>Access to Proposals</p>
-    <div *ngIf="!(auth.user | async)">
+    <div *ngIf="!(authService.user | async)">
       <button class="btn btn-success" (click)="googleLogin()">Login with Google</button><br>
       <button class="btn btn-success" (click)="facebookLogin()">Login with Facebook</button><br>
       <button class="btn btn-success" (click)="twitterLogin()">Login with Twitter</button><br>
@@ -10,3 +10,4 @@
     </div>
   </div>
 </div>
+<tss-twitter-profile></tss-twitter-profile>

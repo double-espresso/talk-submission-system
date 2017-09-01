@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../services/auth.service';
-
+import { Profile } from '../models/profile';
 
 @Component({
-  selector: 'app-home',
+  selector: 'tss-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   googleLogin() {
-    this.auth.googleLogin();
+    this.authService.googleLogin();
   }
   facebookLogin() {
-    this.auth.facebookLogin();
+    this.authService.facebookLogin();
   }
   twitterLogin() {
-    this.auth.twitterLogin();
+    this.authService.twitterLogin();
+
   }
   githubLogin() {
-    this.auth.githubLogin();
+    this.authService.githubLogin();
   }
 
   ngOnInit() {

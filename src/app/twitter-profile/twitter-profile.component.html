@@ -1,3 +1,5 @@
+<div class="container" *ngIf="(authService.user | async)">
+
 <p>
   twitter-profile works!
 </p>
@@ -9,3 +11,6 @@ username: {{profile?.username}}
 img: <img src={{profile?.photo}}>
 <br>
 Bio: {{profile?.bio}}
+
+
+</div>

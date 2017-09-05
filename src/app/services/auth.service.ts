@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
+import 'rxjs/add/operator/take'
 
 @Injectable()
 export class AuthService {
@@ -26,7 +27,9 @@ export class AuthService {
   twitterLogin() {
     this.authentication.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
     .then((currentUserInfo)=>{
-      this.database.object(`/users/${currentUserInfo.user.uid}`).subscribe(firebaseUserInfo => {
+      this.database.object(`/users/${currentUserInfo.user.uid}`, { preserveSnapshot: true })
+      .take(1)
+      .subscribe(firebaseUserInfo => {
           if(firebaseUserInfo.$value === null) {
             firebase.database().ref('users/' + currentUserInfo.user.uid).set({
               name: currentUserInfo.additionalUserInfo.profile.name,

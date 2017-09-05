@@ -1,0 +1,13 @@
+<div class="container" *ngIf="(authService.user | async)">
+
+<p>
+  facebook-profile works!
+</p>
+
+name: {{profile?.name}}
+<br>
+username: {{profile?.email}}
+<br>
+img: <img src={{profile?.photo}}>
+
+</div>

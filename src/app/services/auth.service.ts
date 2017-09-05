@@ -21,14 +21,26 @@ export class AuthService {
   }
 
   facebookLogin() {
-    this.authentication.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then((currentUserInfo) => {
+      this.database.object(`/users/${currentUserInfo.user.uid}`)
+      .subscribe(firebaseUserInfo => {
+        if(firebaseUserInfo.$value === null) {
+          firebase.database().ref('users/' + currentUserInfo.user.uid).set({
+            name: currentUserInfo.additionalUserInfo.profile.name,
+            photo: currentUserInfo.additionalUserInfo.profile.picture.data.url,
+            email: currentUserInfo.additionalUserInfo.profile.email,
+            loginType: "facebook"
+          });
+        }
+      })
+    });
   }
 
   twitterLogin() {
     this.authentication.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
     .then((currentUserInfo)=>{
-      this.database.object(`/users/${currentUserInfo.user.uid}`, { preserveSnapshot: true })
-      .take(1)
+      this.database.object(`/users/${currentUserInfo.user.uid}`)
       .subscribe(firebaseUserInfo => {
           if(firebaseUserInfo.$value === null) {
             firebase.database().ref('users/' + currentUserInfo.user.uid).set({

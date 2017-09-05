@@ -7,6 +7,7 @@ import 'rxjs/add/operator/take'
 
 @Injectable()
 export class AuthService {
+  public loginProvider: string;
   user: Observable<firebase.User>;
   constructor(private authentication: AngularFireAuth, private database: AngularFireDatabase) {
     this.user = authentication.authState;

@@ -12,4 +12,5 @@ export class ProfileService {
     this.profile = this.database.object(`users/${id}`);
     return this.profile;
   }
+
 }

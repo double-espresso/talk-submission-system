@@ -17,6 +17,7 @@ export class FacebookProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("provider", this.authService.loginProvider);
     this.subscription = this.authService.user
     .subscribe((data)=> {
       console.log("data", data);

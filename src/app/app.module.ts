@@ -18,6 +18,7 @@ import { routing } from './app.routing';
 import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
 import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { GoogleProfileComponent } from './google-profile/google-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { GithubProfileComponent } from './github-profile/github-profile.componen
     TwitterProfileComponent,
     FacebookProfileComponent,
     GithubProfileComponent,
+    GoogleProfileComponent,
   ],
   imports: [
     BrowserModule,

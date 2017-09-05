@@ -9,8 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
 import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
-
-
+import { GoogleProfileComponent } from './google-profile/google-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +17,7 @@ const routes: Routes = [
   { path: 'twitter-profile', component: TwitterProfileComponent},
   { path: 'facebook-profile', component: FacebookProfileComponent},
   { path: 'github-profile', component: GithubProfileComponent},
+  { path: 'google-profile', component: GoogleProfileComponent},
 
 ];
 

@@ -14,7 +14,20 @@ export class AuthService {
   }
 
   googleLogin() {
-    this.authentication.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then((currentUserInfo) => {
+      this.database.object(`/users/${currentUserInfo.user.uid}`)
+      .subscribe(firebaseUserInfo => {
+        if(firebaseUserInfo.$value === null) {
+          firebase.database().ref('users/' + currentUserInfo.user.uid).set({
+            name: currentUserInfo.additionalUserInfo.profile.name,
+            photo: currentUserInfo.additionalUserInfo.profile.picture,
+            email: currentUserInfo.additionalUserInfo.profile.email,
+            loginType: "google"
+          });
+        }
+      })
+    });
   }
 
   githubLogin() {

@@ -1,0 +1,13 @@
+<div class="container" *ngIf="(authService.user | async)">
+
+<p>
+  google-profile works!
+</p>
+
+name: {{profile?.name}}
+<br>
+img: <img src={{profile?.photo}}>
+<br>
+email: {{profile?.email}}
+
+</div>

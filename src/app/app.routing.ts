@@ -8,6 +8,7 @@ import { EditItemsComponent } from './edit-items/edit-items.component';
 import { HomeComponent } from './home/home.component';
 import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
 import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'items', component: ItemsComponent },
   { path: 'twitter-profile', component: TwitterProfileComponent},
   { path: 'facebook-profile', component: FacebookProfileComponent},
+  { path: 'github-profile', component: GithubProfileComponent},
 
 ];
 

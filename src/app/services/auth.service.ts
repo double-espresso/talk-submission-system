@@ -18,7 +18,22 @@ export class AuthService {
   }
 
   githubLogin() {
-    this.authentication.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+    this.authentication.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+    .then((currentUserInfo) => {
+      this.database.object(`/users/${currentUserInfo.user.uid}`)
+      .subscribe(firebaseUserInfo => {
+        if(firebaseUserInfo.$value === null) {
+          firebase.database().ref('users/' + currentUserInfo.user.uid).set({
+            name: currentUserInfo.additionalUserInfo.profile.name,
+            photo: currentUserInfo.additionalUserInfo.profile.avatar_url,
+            email: currentUserInfo.additionalUserInfo.profile.email,
+            username: currentUserInfo.additionalUserInfo.profile.login,
+            bio: currentUserInfo.additionalUserInfo.profile.bio,
+            loginType: "github"
+          });
+        }
+      })
+    });
   }
 
   facebookLogin() {

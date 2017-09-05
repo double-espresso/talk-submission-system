@@ -5,12 +5,13 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
-  selector: 'app-facebook-profile',
-  templateUrl: './facebook-profile.component.html',
-  styleUrls: ['./facebook-profile.component.sass']
+  selector: 'app-github-profile',
+  templateUrl: './github-profile.component.html',
+  styleUrls: ['./github-profile.component.sass']
 })
-export class FacebookProfileComponent implements OnInit {
+export class GithubProfileComponent implements OnInit {
   profile: Profile;
   subscription;
   constructor(private authService: AuthService, private profileService: ProfileService) {

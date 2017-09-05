@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
 import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FacebookProfileComponent } from './facebook-profile/facebook-profile.co
     HomeComponent,
     TwitterProfileComponent,
     FacebookProfileComponent,
+    GithubProfileComponent,
   ],
   imports: [
     BrowserModule,

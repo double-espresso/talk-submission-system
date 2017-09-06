@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { AuthService} from '../services/auth.service';
 import { Profile } from '../models/profile';
+
 
 @Component({
   selector: 'tss-home',
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

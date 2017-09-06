@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../services/auth.service';
-import { Router } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'tss-nav-bar',
@@ -10,24 +10,15 @@ import { ProfileService } from '../services/profile.service';
 })
 export class NavBarComponent implements OnInit {
   profileProvider: string;
-  constructor(private authService: AuthService, private router: Router, private profileService: ProfileService) { }
+  private subscription: Subscription;
+  constructor(private authService: AuthService,
+              private profileService: ProfileService) { }
 
   logout() {
-    this.router.navigateByUrl('/');
     this.authService.logout();
   }
 
   ngOnInit() {
-    this.authService.user
-    .subscribe((data)=> {
-      if (data !== null) {
-          this.profileService.getProfile(data.uid)
-          .subscribe((profile)=>{
-            console.log(profile);
-            this.profileProvider = profile.loginType + "-profile";
-          });
-      }
-    })
 
   }
 

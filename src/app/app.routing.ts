@@ -10,15 +10,16 @@ import { TwitterProfileComponent } from './twitter-profile/twitter-profile.compo
 import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { GoogleProfileComponent } from './google-profile/google-profile.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'items', component: ItemsComponent },
-  { path: 'twitter-profile', component: TwitterProfileComponent},
-  { path: 'facebook-profile', component: FacebookProfileComponent},
-  { path: 'github-profile', component: GithubProfileComponent},
-  { path: 'google-profile', component: GoogleProfileComponent},
-
+  { path: 'view-profile/twitter-profile', component: TwitterProfileComponent},
+  { path: 'view-profile/facebook-profile', component: FacebookProfileComponent},
+  { path: 'view-profile/github-profile', component: GithubProfileComponent},
+  { path: 'view-profile/google-profile', component: GoogleProfileComponent},
+  { path: 'view-profile', component: ViewProfileComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

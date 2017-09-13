@@ -12,24 +12,18 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
-import { TwitterProfileComponent } from './twitter-profile/twitter-profile.component';
-import { FacebookProfileComponent } from './facebook-profile/facebook-profile.component';
-import { GithubProfileComponent } from './github-profile/github-profile.component';
-import { GoogleProfileComponent } from './google-profile/google-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     HomeComponent,
-    TwitterProfileComponent,
-    FacebookProfileComponent,
-    GithubProfileComponent,
-    GoogleProfileComponent,
     ViewProfileComponent,
     EditProfileComponent,
+    UserProfileComponent,
   ],
   imports: [
     FormsModule,

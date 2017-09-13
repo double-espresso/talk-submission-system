@@ -1,0 +1,12 @@
+
+
+Name: <input type="text" [(ngModel)]="name">{{name}}<br>
+Username: <input type="text" [(ngModel)]="username">{{username}}<br>
+Photo Link: <input type="text" [(ngModel)]="photo">{{photo}}<br>
+Bio: <input type="text" [(ngModel)]="bio">{{bio}}<br>
+Email: <input type="text" [(ngModel)]="email">{{email}}<br>
+
+<button (click)="update(name, username, photo, bio, email)"
+        [routerLink]="['..']">
+        Update
+</button>

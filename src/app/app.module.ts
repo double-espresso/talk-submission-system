@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
@@ -16,6 +17,7 @@ import { FacebookProfileComponent } from './facebook-profile/facebook-profile.co
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { GoogleProfileComponent } from './google-profile/google-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,10 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     GithubProfileComponent,
     GoogleProfileComponent,
     ViewProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

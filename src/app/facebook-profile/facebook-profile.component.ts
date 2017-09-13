@@ -26,7 +26,7 @@ export class FacebookProfileComponent implements OnInit {
             this.profile = profile;
           });
       }
-    })
+    });
   }
 
   ngOnDestroy() {

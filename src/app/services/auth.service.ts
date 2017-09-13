@@ -18,29 +18,36 @@ export class AuthService {
     this.user = authentication.authState;
   }
 
-  private login(id, provider, name, username, photo, bio, email, ) {
+  private login(id: string, provider: string, name: string, username: string,
+    photo: string, bio: string, email: string) {
+
       this.subscription = this.database.object(`/users/${id}`)
-      .subscribe(firebaseUserInfo => {
-        if (firebaseUserInfo.$value === null) {
-          firebase.database().ref('users/' + id).set({
-            name: name,
-            username: username,
-            photo: photo,
-            bio: bio,
-            email: email,
-            loginType: provider
-          });
-        }
-      })
+        .subscribe(firebaseUserInfo => {
+          if (firebaseUserInfo.$value === null) {
+            firebase.database().ref('users/' + id).set({
+              name: name,
+              username: username,
+              photo: photo,
+              bio: bio,
+              email: email,
+              loginType: provider
+            });
+          }
+        });
   }
 
   googleLogin() {
-    this.authentication.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    this.authentication.auth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((currentUserInfo) => {
-        this.login(currentUserInfo.user.uid, 'google',
-          currentUserInfo.additionalUserInfo.profile.name, "",
-          currentUserInfo.additionalUserInfo.profile.picture, "",
-          currentUserInfo.additionalUserInfo.profile.email,
+        const user = currentUserInfo.user;
+        const profile = currentUserInfo.additionalUserInfo.profile;
+        this.login(user.uid, 'google',
+          profile.name,
+          '', // provider dont have username info
+          profile.picture,
+          '', // provider dont have bio
+          profile.email,
         )
       });
   }
@@ -48,10 +55,14 @@ export class AuthService {
   githubLogin() {
     this.authentication.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((currentUserInfo) => {
-        this.login(currentUserInfo.user.uid, 'github',
-          currentUserInfo.additionalUserInfo.profile.name, currentUserInfo.additionalUserInfo.profile.login,
-          currentUserInfo.additionalUserInfo.profile.avatar_url, currentUserInfo.additionalUserInfo.profile.bio,
-          currentUserInfo.additionalUserInfo.profile.email,
+        const user = currentUserInfo.user;
+        const profile = currentUserInfo.additionalUserInfo.profile;
+        this.login(user.uid, 'github',
+          profile.name,
+          profile.login,
+          profile.avatar_url,
+          profile.bio,
+          profile.email,
         )
       });
   }
@@ -59,10 +70,14 @@ export class AuthService {
   facebookLogin() {
     this.authentication.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then((currentUserInfo) => {
-        this.login(currentUserInfo.user.uid, 'facebook',
-          currentUserInfo.additionalUserInfo.profile.name, "",
-          currentUserInfo.additionalUserInfo.profile.picture.data.url, "",
-          currentUserInfo.additionalUserInfo.profile.email,
+        const user = currentUserInfo.user;
+        const profile = currentUserInfo.additionalUserInfo.profile;
+        this.login(user.uid, 'facebook',
+          profile.name,
+          '', //provider dont have username
+          profile.picture.data.url,
+          '', //provider dont have bio
+          profile.email,
         )
       });
   }
@@ -70,10 +85,14 @@ export class AuthService {
   twitterLogin() {
     this.authentication.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
       .then((currentUserInfo) => {
-        this.login(currentUserInfo.user.uid, 'twitter',
-          currentUserInfo.additionalUserInfo.profile.name, currentUserInfo.additionalUserInfo.username,
-          currentUserInfo.additionalUserInfo.profile.profile_image_url, currentUserInfo.additionalUserInfo.profile.description,
-          "",
+        const user = currentUserInfo.user;
+        const profile = currentUserInfo.additionalUserInfo.profile;
+        this.login(user.uid, 'twitter',
+          profile.name,
+          currentUserInfo.additionalUserInfo.username,
+          profile.profile_image_url,
+          profile.description,
+          '', // provider dont have email
         )
       });
   }

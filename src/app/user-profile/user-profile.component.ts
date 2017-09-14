@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'tss-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.sass']
+  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   profile: Profile;

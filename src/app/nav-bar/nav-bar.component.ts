@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'tss-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.sass']
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
   profileProvider: string;

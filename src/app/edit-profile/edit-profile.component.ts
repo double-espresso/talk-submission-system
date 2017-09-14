@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 @Component({
   selector: 'tss-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.sass']
+  styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
   profile: Profile;
